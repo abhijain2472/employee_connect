@@ -19,13 +19,29 @@ class Employee extends Equatable {
     this.endDate = '',
   });
 
-  factory Employee.fromTaskItemData(EmployeeItemData employeeItemData) {
+  factory Employee.fromEmployeeItemData(EmployeeItemData employeeItemData) {
     return Employee(
       employeeId: employeeItemData.employeeId,
       name: employeeItemData.name,
       roleId: employeeItemData.roleId,
       startDate: employeeItemData.startDate,
       endDate: employeeItemData.endDate,
+    );
+  }
+
+  Employee copyWith({
+    String? employeeId,
+    String? name,
+    String? roleId,
+    String? startDate,
+    String? endDate,
+  }) {
+    return Employee(
+      employeeId: employeeId ?? this.employeeId,
+      name: name ?? this.name,
+      roleId: roleId ?? this.roleId,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
     );
   }
 
@@ -38,7 +54,7 @@ class Employee extends Equatable {
       );
 
   @override
-  List<Object?> get props => [employeeId];
+  List<Object?> get props => [employeeId, startDate, endDate];
 
   EmployeeRole get employeeRole => EmployeeRole.fromId(roleId);
 

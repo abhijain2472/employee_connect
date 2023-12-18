@@ -18,6 +18,8 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
   Employee? lastDeletedEmployee;
   int? lastDeletedIndex;
 
+  List<Employee> get employees => _allEmployees;
+
   EmployeeBloc({
     required EmployeeRepository employeeRepository,
   })  : _employeeRepository = employeeRepository,

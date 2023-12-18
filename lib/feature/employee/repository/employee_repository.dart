@@ -20,7 +20,7 @@ class LocalEmployeeRepository implements EmployeeRepository {
   @override
   Future<List<Employee>> getAllEmployee() async {
     final employees = await _appDataBase.getAllEmployees();
-    return employees.map(Employee.fromTaskItemData).toList();
+    return employees.map(Employee.fromEmployeeItemData).toList();
   }
 
   @override
