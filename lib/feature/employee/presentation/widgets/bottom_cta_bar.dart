@@ -24,6 +24,7 @@ class BottomCtaBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      key: const Key('padding'),
       padding: padding ??
           const EdgeInsets.symmetric(
             vertical: Sp.px10,

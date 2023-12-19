@@ -1,8 +1,11 @@
 import 'package:employee_connect/core/extension/context_extension.dart';
+import 'package:employee_connect/feature/employee/presentation/bloc/employee_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../helper.dart';
+import '../../mocks.dart';
 
 void main() {
   group(
@@ -115,6 +118,115 @@ void main() {
       });
     },
   );
+
+  group(
+    'Toast Extension Test',
+    () {
+      testWidgets('should show and hide SnackBar with action without errors',
+          (WidgetTester tester) async {
+        await tester.pumpWidget(
+          TestableWidget(
+            child: Builder(
+              builder: (context) {
+                return ElevatedButton(
+                  onPressed: () {
+                    context.showSnackBar('Test SnackBar',
+                        ctaText: 'Test Action');
+                  },
+                  child: const Text('Show SnackBar'),
+                );
+              },
+            ),
+          ),
+        );
+
+        // Initially there is no SnackBar
+        expect(find.byType(SnackBar), findsNothing);
+
+        // Tap the button to show the SnackBar
+        await tester.tap(find.text('Show SnackBar'));
+        await tester.pump();
+
+        // Wait for the SnackBar to be displayed
+        await tester.pump(const Duration(seconds: 1));
+
+        // Check if the SnackBar is visible
+        expect(find.byType(SnackBar), findsOneWidget);
+        // Check if the SnackBar Action is visible
+        expect(find.byType(SnackBarAction), findsOneWidget);
+
+        // Wait for the SnackBar to hide (duration + delay)
+        await tester.pumpAndSettle(const Duration(seconds: 3));
+
+        // Check if the SnackBar is no longer visible
+        expect(find.byType(SnackBar), findsNothing);
+      });
+    },
+  );
+  group(
+    'Block Extension Test',
+    () {
+      testWidgets('should read bloc without errors',
+          (WidgetTester tester) async {
+        // Create a MaterialApp with a BlocProvider wrapping employee BLoC
+        await tester.pumpWidget(
+          TestableWidget(
+            child: BlocProvider<EmployeeBloc>(
+              create: (context) => EmployeeBloc(
+                employeeRepository: MockEmployeeRepository(),
+              ),
+              child: Builder(
+                builder: (context) {
+                  // Access the BLoC using the BlockExtension
+                  final bloc = context.readBloc<EmployeeBloc>();
+
+                  // Verify that the BLoC is not null
+                  expect(bloc, isNotNull);
+
+                  return Container();
+                },
+              ),
+            ),
+          ),
+        );
+      });
+
+      // Add more test cases for other scenarios if needed
+    },
+  );
+  group('Navigator Extension Test', () {
+    late BuildContext mockContext;
+    testWidgets('should push and pop a page without errors',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) {
+              mockContext = context;
+              return const Text('Go to Second Page');
+            },
+          ),
+        ),
+      );
+
+      // Tap the button to navigate to the second page
+      await tester.tap(find.text('Go to Second Page'));
+      await tester.pump();
+
+       mockContext.push(const SecondPage());
+      await tester.pumpAndSettle();
+
+      // Verify that the second page is pushed onto the navigation stack
+      expect(find.text('Second Page'), findsOneWidget);
+
+      // Use the NavigatorExtension to pop the second page
+      mockContext.pop();
+      await tester.pumpAndSettle();
+
+      // Verify that we are back to the first page
+      expect(find.text('Go to Second Page'), findsOneWidget);
+    });
+  });
 }
 
 Widget focusTestWidget(FocusNode focusNode) {
@@ -137,4 +249,15 @@ Widget focusTestWidget(FocusNode focusNode) {
       },
     ),
   );
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: Text('Second Page')),
+    );
+  }
 }

@@ -17,7 +17,7 @@ void main() {
             MaterialApp(
               home: Builder(builder: (c) {
                 context = c;
-                return EmptyStateView();
+                return const EmptyStateView();
               }),
             ),
           );
@@ -30,17 +30,15 @@ void main() {
             findsOneWidget,
           );
           expect(find.text(AppStrings.emptyStateText), findsOneWidget);
+          final text = widgetTester.widget<Text>(find.byType(Text));
           expect(
-              find.byWidgetPredicate(
-                (widget) =>
-                    widget is Text &&
-                    widget.data == AppStrings.emptyStateText &&
-                    widget.style ==
-                        context.appTextStyle.titleMedium?.copyWith(
-                          color: AppColors.blackTextColor,
-                        ),
-              ),
-              findsOneWidget);
+            text.data == AppStrings.emptyStateText &&
+                text.style ==
+                    context.appTextStyle.titleMedium?.copyWith(
+                      color: AppColors.blackTextColor,
+                    ),
+            isTrue,
+          );
         },
       );
     },

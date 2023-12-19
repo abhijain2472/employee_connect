@@ -43,23 +43,11 @@ class _AppDatePickerState extends State<AppDatePicker> {
 
   DateTime get todayDate => DateTime.now();
 
-  DateTime get nextMonday {
-    int daysUntilNextMonday = DateTime.monday - todayDate.weekday;
-    if (daysUntilNextMonday <= 0) {
-      daysUntilNextMonday += 7;
-    }
-    return todayDate.add(Duration(days: daysUntilNextMonday));
-  }
+  DateTime get nextMonday => todayDate.nextMonday;
 
-  DateTime get nextTuesday {
-    int daysUntilNextTuesday = DateTime.tuesday - todayDate.weekday;
-    if (daysUntilNextTuesday <= 0) {
-      daysUntilNextTuesday += 7;
-    }
-    return todayDate.add(Duration(days: daysUntilNextTuesday));
-  }
+  DateTime get nextTuesday => todayDate.nextTuesday;
 
-  DateTime get nextWeek => todayDate.add(const Duration(days: 7));
+  DateTime get nextWeek => todayDate.nextWeek;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +63,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                 children: [
                   Expanded(
                     child: AppToggleButton(
+                      key: const Key('today_button'),
                       isSelected: selectedDate.isSameDate(todayDate),
                       onTap: () {
                         setState(() {
@@ -87,6 +76,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                   const Space.horizontal(Sp.px16),
                   Expanded(
                     child: AppToggleButton(
+                      key: const Key('next_monday_button'),
                       isSelected: selectedDate.isSameDate(nextMonday),
                       onTap: () {
                         setState(() {
@@ -103,6 +93,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                 children: [
                   Expanded(
                     child: AppToggleButton(
+                      key: const Key('next_tuesday_button'),
                       isSelected: selectedDate.isSameDate(nextTuesday),
                       onTap: () {
                         setState(() {
@@ -115,6 +106,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                   const Space.horizontal(Sp.px16),
                   Expanded(
                     child: AppToggleButton(
+                      key: const Key('after_1_week_button'),
                       isSelected: selectedDate.isSameDate(nextWeek),
                       onTap: () {
                         setState(() {

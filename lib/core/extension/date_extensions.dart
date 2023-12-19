@@ -16,6 +16,25 @@ extension FormattedDate on DateTime {
   bool isBetween(DateTime startDate, DateTime endDate) {
     return isAfter(startDate) && isBefore(endDate);
   }
+
+  DateTime get nextMonday {
+    int daysUntilNextMonday = DateTime.monday - weekday;
+    if (daysUntilNextMonday <= 0) {
+      daysUntilNextMonday += 7;
+    }
+    return add(Duration(days: daysUntilNextMonday));
+  }
+
+  DateTime get nextTuesday {
+    int daysUntilNextTuesday = DateTime.tuesday - weekday;
+    if (daysUntilNextTuesday <= 0) {
+      daysUntilNextTuesday += 7;
+    }
+    return add(Duration(days: daysUntilNextTuesday));
+  }
+
+  DateTime get nextWeek => add(const Duration(days: 7));
+
 }
 
 extension SameDate on DateTime? {

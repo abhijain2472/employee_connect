@@ -85,6 +85,30 @@ void main() {
       expect(isBeforeStart, isFalse);
       expect(isAfterEnd, isFalse);
     });
+
+    test('nextMonday should return the correct date', () {
+      final currentDate = DateTime(2023, 1, 10); // Tuesday
+      final nextMondayDate = currentDate.nextMonday;
+
+      expect(nextMondayDate.weekday, equals(DateTime.monday));
+      expect(nextMondayDate.difference(currentDate).inDays, equals(6));
+    });
+
+    test('nextTuesday should return the correct date', () {
+      final currentDate = DateTime(2023, 1, 10); // Tuesday
+      final nextTuesdayDate = currentDate.nextTuesday;
+
+      expect(nextTuesdayDate.weekday, equals(DateTime.tuesday));
+      expect(nextTuesdayDate.difference(currentDate).inDays, equals(7));
+    });
+
+    test('nextWeek should return the correct date', () {
+      final currentDate = DateTime(2023, 1, 10); // Tuesday
+      final nextWeekDate = currentDate.nextWeek;
+
+      expect(nextWeekDate.difference(currentDate).inDays, equals(7));
+    });
+
   });
 
   group('SameDate extension', () {

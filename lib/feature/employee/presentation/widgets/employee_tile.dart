@@ -26,18 +26,7 @@ class EmployeeTile extends StatelessWidget {
       onTap: onTap,
       child: Dismissible(
         direction: DismissDirection.endToStart,
-        background: Container(
-          color: Colors.red,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(right: Sp.px16),
-                child: SvgIcon(icon: AppAssets.delete),
-              )
-            ],
-          ),
-        ),
+        background: const DeleteView(),
         onDismissed: (direction) {
           if (direction == DismissDirection.endToStart) {
             onDelete();
@@ -74,6 +63,28 @@ class EmployeeTile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class DeleteView extends StatelessWidget {
+  const DeleteView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.red,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          Padding(
+            padding: EdgeInsets.only(right: Sp.px16),
+            child: SvgIcon(icon: AppAssets.delete),
+          )
+        ],
       ),
     );
   }
