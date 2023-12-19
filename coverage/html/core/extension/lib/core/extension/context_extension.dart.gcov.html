@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">29.5&nbsp;%</td>
+            <td class="headerCovTableEntryLo">49.2&nbsp;%</td>
             <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">30</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-12-18 16:42:40</td>
+            <td class="headerValue">2023-12-19 21:53:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -89,10 +89,10 @@
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :           .of(this)</span></span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           1 :           .colorScheme;</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           2 :   TextTheme get appTextStyle =&gt;</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          10 :   TextTheme get appTextStyle =&gt;</span></span>
 <span id="L31"><span class="lineNum">      31</span>              :       Theme</span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           2 :           .of(this)</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :           .textTheme;</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          10 :           .of(this)</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">          10 :           .textTheme;</span></span>
 <span id="L34"><span class="lineNum">      34</span>              : }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
 <span id="L36"><span class="lineNum">      36</span>              : extension FocusExtension on BuildContext {</span>
@@ -106,23 +106,23 @@
 <span id="L44"><span class="lineNum">      44</span>              : }</span>
 <span id="L45"><span class="lineNum">      45</span>              : </span>
 <span id="L46"><span class="lineNum">      46</span>              : extension ToastExtension on BuildContext {</span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC tlaBgUNC">           0 :   void showSnackBar(String text, {</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           1 :   void showSnackBar(String text, {</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :     String? ctaText,</span>
 <span id="L49"><span class="lineNum">      49</span>              :     VoidCallback? onTap,</span>
 <span id="L50"><span class="lineNum">      50</span>              :   }) {</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :     ScaffoldMessenger.of(this).showSnackBar(</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :       SnackBar(</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaUNC">           0 :         content: Text(</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           2 :     ScaffoldMessenger.of(this).showSnackBar(</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           1 :       SnackBar(</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           1 :         content: Text(</span></span>
 <span id="L54"><span class="lineNum">      54</span>              :           text,</span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 :           style: appTextStyle.bodyMedium?.copyWith(</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :           style: appTextStyle.bodyMedium?.copyWith(</span></span>
 <span id="L56"><span class="lineNum">      56</span>              :               color: AppColors.white,</span>
 <span id="L57"><span class="lineNum">      57</span>              :           ),</span>
 <span id="L58"><span class="lineNum">      58</span>              :         ),</span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
 <span id="L60"><span class="lineNum">      60</span>              :         action: ctaText != null</span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :             ? SnackBarAction(</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           1 :             ? SnackBarAction(</span></span>
 <span id="L62"><span class="lineNum">      62</span>              :           label: ctaText ?? '',</span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :           onPressed: onTap ?? () {},</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC tlaBgUNC">           0 :           onPressed: onTap ?? () {},</span></span>
 <span id="L64"><span class="lineNum">      64</span>              :           textColor: AppColors.primary,</span>
 <span id="L65"><span class="lineNum">      65</span>              :         )</span>
 <span id="L66"><span class="lineNum">      66</span>              :             : null,</span>
@@ -133,18 +133,18 @@
 <span id="L71"><span class="lineNum">      71</span>              : }</span>
 <span id="L72"><span class="lineNum">      72</span>              : </span>
 <span id="L73"><span class="lineNum">      73</span>              : extension BlockExtension on BuildContext {</span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :   T readBloc&lt;T extends StateStreamableSource&lt;Object?&gt;&gt;() {</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :     return BlocProvider.of&lt;T&gt;(this);</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC tlaBgGNC">           2 :   T readBloc&lt;T extends StateStreamableSource&lt;Object?&gt;&gt;() {</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">           2 :     return BlocProvider.of&lt;T&gt;(this);</span></span>
 <span id="L76"><span class="lineNum">      76</span>              :   }</span>
 <span id="L77"><span class="lineNum">      77</span>              : }</span>
 <span id="L78"><span class="lineNum">      78</span>              : </span>
 <span id="L79"><span class="lineNum">      79</span>              : extension NavigatorExtension on BuildContext {</span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaUNC">           0 :   Future&lt;T?&gt; push&lt;T extends Object?&gt;(Widget page) =&gt;</span></span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :       Navigator.of(this).push(</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaUNC">           0 :         MaterialPageRoute(builder: (_) =&gt; page),</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">           1 :   Future&lt;T?&gt; push&lt;T extends Object?&gt;(Widget page) =&gt;</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">           2 :       Navigator.of(this).push(</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">           2 :         MaterialPageRoute(builder: (_) =&gt; page),</span></span>
 <span id="L83"><span class="lineNum">      83</span>              :       );</span>
 <span id="L84"><span class="lineNum">      84</span>              : </span>
-<span id="L85"><span class="lineNum">      85</span> <span class="tlaUNC">           0 :   Future&lt;T?&gt; pushReplacement&lt;T extends Object?, TO extends Object?&gt;(Widget page,</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;T?&gt; pushReplacement&lt;T extends Object?, TO extends Object?&gt;(Widget page,</span></span>
 <span id="L86"><span class="lineNum">      86</span>              :       {</span>
 <span id="L87"><span class="lineNum">      87</span>              :         TO? result,</span>
 <span id="L88"><span class="lineNum">      88</span>              :       }) {</span>
@@ -155,9 +155,9 @@
 <span id="L93"><span class="lineNum">      93</span>              :     );</span>
 <span id="L94"><span class="lineNum">      94</span>              :   }</span>
 <span id="L95"><span class="lineNum">      95</span>              : </span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaUNC">           0 :   void pop&lt;T extends Object?&gt;([T? result]) =&gt; Navigator.of(this).pop&lt;T&gt;(result);</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC tlaBgGNC">           6 :   void pop&lt;T extends Object?&gt;([T? result]) =&gt; Navigator.of(this).pop&lt;T&gt;(result);</span></span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :   void maybePop&lt;T extends Object?&gt;([T? result]) =&gt;</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC tlaBgUNC">           0 :   void maybePop&lt;T extends Object?&gt;([T? result]) =&gt;</span></span>
 <span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :       Navigator.of(this).maybePop&lt;T&gt;(result);</span></span>
 <span id="L100"><span class="lineNum">     100</span>              : </span>
 <span id="L101"><span class="lineNum">     101</span> <span class="tlaUNC">           0 :   void popUntil(RoutePredicate predicate) =&gt;</span></span>
