@@ -99,6 +99,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppTextFieldWidget(
+                  key: const Key(AppStrings.nameHintText),
                   hintText: AppStrings.nameHintText,
                   textFieldController: nameTextController,
                   prefixIcon: AppAssets.person,
@@ -107,6 +108,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                 ),
                 const Space.vertical(Sp.px24),
                 AppTextFieldWidget(
+                  key: const Key(AppStrings.roleHintText),
                   hintText: AppStrings.roleHintText,
                   readOnly: true,
                   prefixIcon: AppAssets.work,
