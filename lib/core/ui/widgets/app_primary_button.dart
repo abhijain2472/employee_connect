@@ -8,14 +8,17 @@ class AppPrimaryButton extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.title,
+    this.tapKey,
   }) : super(key: key);
 
   final VoidCallback onTap;
   final String title;
+  final Key? tapKey;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      key: tapKey,
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,

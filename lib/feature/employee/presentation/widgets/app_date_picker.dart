@@ -198,6 +198,8 @@ class _AppDatePickerState extends State<AppDatePicker> {
             const HorizontalDivider(),
             const Space.vertical(Sp.px16),
             BottomCtaBar(
+              saveKey: const Key('date-save'),
+              cancelKey: const Key('date-cancel'),
               padding: EdgeInsets.zero,
               onTapSave: () => context.pop(selectedDate),
               onTapCancel: () => context.pop(selectedDate),

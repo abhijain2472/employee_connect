@@ -121,6 +121,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                   children: [
                     Expanded(
                       child: AppTextFieldWidget(
+                        key: const Key(AppStrings.startDateHintText),
                         hintText: AppStrings.startDateHintText,
                         prefixIcon: AppAssets.calender,
                         textFieldController: startDateTextController,
@@ -133,6 +134,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                     const Space.horizontal(Sp.px16),
                     Expanded(
                       child: AppTextFieldWidget(
+                        key: const Key(AppStrings.endDateHintText),
                         hintText: AppStrings.endDateHintText,
                         prefixIcon: AppAssets.calender,
                         textFieldController: endDateTextController,

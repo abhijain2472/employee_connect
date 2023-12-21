@@ -59,7 +59,7 @@ extension ToastExtension on BuildContext {
 
         action: ctaText != null
             ? SnackBarAction(
-          label: ctaText ?? '',
+          label: ctaText ,
           onPressed: onTap ?? () {},
           textColor: AppColors.primary,
         )

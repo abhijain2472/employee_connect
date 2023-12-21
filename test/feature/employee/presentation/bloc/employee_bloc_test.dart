@@ -12,6 +12,7 @@ void main() {
   late EmployeeRepository _employeeRepository;
   late EmployeeBloc _employeeBloc;
   setUp(() {
+    registerFallbackValue(MockEmployee());
     _employeeRepository = MockEmployeeRepository();
     _employeeBloc = EmployeeBloc(
       employeeRepository: _employeeRepository,
@@ -39,8 +40,11 @@ void main() {
         'emits [EmployeeLoading,EmployeeLoaded] state with added employee',
         build: () => _employeeBloc,
         act: (_) {
-          when(() => _employeeRepository.addEmployee(employee: tEmployee1))
-              .thenAnswer((invocation) async => 1);
+          when(
+            () => _employeeRepository.addEmployee(
+              employee: any(named: 'employee'),
+            ),
+          ).thenAnswer((invocation) async => 1);
           _employeeBloc.add(AddEmployee(employee: tEmployee1));
         },
         expect: () => [

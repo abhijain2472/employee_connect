@@ -12,8 +12,7 @@ void main() {
 
   setUp(() {
     mockAppDataBase = MockAppDataBase();
-    employeeRepository =
-        LocalEmployeeRepository(appDataBase: mockAppDataBase);
+    employeeRepository = LocalEmployeeRepository(appDataBase: mockAppDataBase);
   });
 
   group(
@@ -44,6 +43,16 @@ void main() {
       );
 
       test(
+        'should return exception from app database if something went wrong',
+        () async {
+          when<dynamic>(() => mockAppDataBase.getAllEmployees())
+              .thenThrow(Exception());
+          expect(() => employeeRepository.getAllEmployee(),
+              throwsA(isA<Exception>()));
+        },
+      );
+
+      test(
         'should return proper response for add employee',
         () async {
           when(() => mockAppDataBase.insertEmployee(tEmpItemData1)).thenAnswer(
@@ -54,7 +63,6 @@ void main() {
           verify(() => mockAppDataBase.insertEmployee(tEmpItemData1));
           expect(result, 1);
           verifyNoMoreInteractions(mockAppDataBase);
-
         },
       );
 
@@ -69,7 +77,6 @@ void main() {
           verify(() => mockAppDataBase.deleteEmployee(tEmpItemData1));
           expect(result, 1);
           verifyNoMoreInteractions(mockAppDataBase);
-
         },
       );
       test(

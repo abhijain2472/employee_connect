@@ -13,13 +13,16 @@ class BottomCtaBar extends StatelessWidget {
     required this.onTapCancel,
     this.padding,
     this.prefixWidget,
+    this.cancelKey,
+    this.saveKey,
   }) : super(key: key);
 
   final VoidCallback onTapSave;
   final VoidCallback onTapCancel;
   final EdgeInsets? padding;
-
   final Widget? prefixWidget;
+  final Key? cancelKey;
+  final Key? saveKey;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +39,14 @@ class BottomCtaBar extends StatelessWidget {
           if (prefixWidget != null) prefixWidget!,
           const Spacer(),
           AppSecondaryButton(
+            key: cancelKey,
             onTap: onTapCancel,
             title: AppStrings.cancelCTAText,
           ),
           const Space.horizontal(Sp.px16),
           AppPrimaryButton(
+            // tapKey: const Key('date-save'),
+            key: saveKey,
             onTap: onTapSave,
             title: AppStrings.saveCTAText,
           ),

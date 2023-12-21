@@ -64,6 +64,7 @@ final tEmpItemData4 = EmployeeItemData(
   endDate: '2023-12-20 00:00:00.000Z',
 );
 final updatedEmployee2 = tEmployee2.copyWith(name: 'Updated Name');
+final updatedEmployee1 = tEmployee1.copyWith(name: 'Updated Name');
 
 final tEmployeeList = <Employee>[
   tEmployee1,
@@ -80,4 +81,3 @@ final tEmployeeItemDataList = <EmployeeItemData>[
 
 final tDate = DateTime(2023, 1, 15);
 const tDateString = '2023-01-15';
-

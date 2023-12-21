@@ -41,7 +41,7 @@ class EmployeeListWithLabel extends StatelessWidget {
           itemBuilder: (_, index) {
             final employee = employees.elementAt(index);
             return EmployeeTile(
-              key: Key('e$employee.employeeId'),
+              key: Key('e${employee.employeeId}'),
               employee: employee,
               onDelete: () =>
                   employeeBloc.add(DeleteEmployee(employee: employee)),
