@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:employee_connect/feature/employee/models/employee.dart';
 import 'package:employee_connect/feature/employee/presentation/bloc/employee_bloc.dart';
 import 'package:employee_connect/feature/employee/presentation/widgets/employee_list_view.dart';
@@ -48,7 +49,8 @@ void main() {
 
     // Verify that the EmployeeTile is rendered for each employee
     for (final employee in tEmployeeList) {
-      final employeeTile = find.byKey(Key('e${employee.employeeId}'));
+      final employeeTile =
+          find.byKey(WidgetKeys.employeeKey(employee.employeeId));
       expect(employeeTile, findsOneWidget);
 
       // Simulate a tap on the EmployeeTile

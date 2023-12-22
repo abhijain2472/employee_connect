@@ -5,6 +5,7 @@ import 'package:employee_connect/core/extension/date_extensions.dart';
 import 'package:employee_connect/core/ui/app_assets.dart';
 import 'package:employee_connect/core/ui/app_colors.dart';
 import 'package:employee_connect/core/ui/sizing_util.dart';
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:employee_connect/core/ui/widgets/app_text_field.dart';
 import 'package:employee_connect/core/ui/widgets/horizontal_divider.dart';
 import 'package:employee_connect/core/ui/widgets/spacing.dart';
@@ -80,6 +81,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
         actions: [
           if (isUpdate)
             IconButton(
+              key: WidgetKeys.deleteEmpIcon,
               onPressed: () {
                 context.readBloc<EmployeeBloc>().add(
                       DeleteEmployee(employee: widget.employee!),
@@ -99,7 +101,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppTextFieldWidget(
-                  key: const Key(AppStrings.nameHintText),
+                  key: WidgetKeys.nameInput,
                   hintText: AppStrings.nameHintText,
                   textFieldController: nameTextController,
                   prefixIcon: AppAssets.person,
@@ -108,7 +110,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                 ),
                 const Space.vertical(Sp.px24),
                 AppTextFieldWidget(
-                  key: const Key(AppStrings.roleHintText),
+                  key: WidgetKeys.roleInput,
                   hintText: AppStrings.roleHintText,
                   readOnly: true,
                   prefixIcon: AppAssets.work,
@@ -121,7 +123,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                   children: [
                     Expanded(
                       child: AppTextFieldWidget(
-                        key: const Key(AppStrings.startDateHintText),
+                        key: WidgetKeys.startDateInput,
                         hintText: AppStrings.startDateHintText,
                         prefixIcon: AppAssets.calender,
                         textFieldController: startDateTextController,
@@ -134,7 +136,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                     const Space.horizontal(Sp.px16),
                     Expanded(
                       child: AppTextFieldWidget(
-                        key: const Key(AppStrings.endDateHintText),
+                        key: WidgetKeys.endDateInput,
                         hintText: AppStrings.endDateHintText,
                         prefixIcon: AppAssets.calender,
                         textFieldController: endDateTextController,
@@ -150,6 +152,8 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
           const Spacer(),
           const HorizontalDivider(),
           BottomCtaBar(
+            saveKey: WidgetKeys.empSave,
+            cancelKey: WidgetKeys.empCancel,
             onTapSave: _onTapSave,
             onTapCancel: context.pop,
           ),

@@ -98,6 +98,7 @@ void main() {
 
       // Enter some text and submit
       await tester.enterText(find.byType(TextFormField), 'Test');
+
       await tester.testTextInput.receiveAction(TextInputAction.done);
 
       // Trigger a frame

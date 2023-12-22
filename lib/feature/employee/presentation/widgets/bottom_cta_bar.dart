@@ -1,3 +1,4 @@
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_strings.dart';
@@ -27,7 +28,7 @@ class BottomCtaBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      key: const Key('padding'),
+      key: WidgetKeys.bottomCtaPadding,
       padding: padding ??
           const EdgeInsets.symmetric(
             vertical: Sp.px10,

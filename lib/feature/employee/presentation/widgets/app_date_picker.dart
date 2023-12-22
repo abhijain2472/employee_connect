@@ -2,6 +2,7 @@ import 'package:employee_connect/core/app_strings.dart';
 import 'package:employee_connect/core/extension/context_extension.dart';
 import 'package:employee_connect/core/extension/date_extensions.dart';
 import 'package:employee_connect/core/ui/app_assets.dart';
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:employee_connect/core/ui/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -63,7 +64,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                 children: [
                   Expanded(
                     child: AppToggleButton(
-                      key: const Key('today_button'),
+                      key: WidgetKeys.todayButton,
                       isSelected: selectedDate.isSameDate(todayDate),
                       onTap: () {
                         setState(() {
@@ -76,7 +77,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                   const Space.horizontal(Sp.px16),
                   Expanded(
                     child: AppToggleButton(
-                      key: const Key('next_monday_button'),
+                      key: WidgetKeys.nextMondayButton,
                       isSelected: selectedDate.isSameDate(nextMonday),
                       onTap: () {
                         setState(() {
@@ -93,7 +94,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                 children: [
                   Expanded(
                     child: AppToggleButton(
-                      key: const Key('next_tuesday_button'),
+                      key: WidgetKeys.nextTuesdayButton,
                       isSelected: selectedDate.isSameDate(nextTuesday),
                       onTap: () {
                         setState(() {
@@ -106,7 +107,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                   const Space.horizontal(Sp.px16),
                   Expanded(
                     child: AppToggleButton(
-                      key: const Key('after_1_week_button'),
+                      key: WidgetKeys.after1WeekButton,
                       isSelected: selectedDate.isSameDate(nextWeek),
                       onTap: () {
                         setState(() {
@@ -123,6 +124,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                 children: [
                   Expanded(
                     child: AppToggleButton(
+                      key: WidgetKeys.noDateButton,
                       isSelected: selectedDate == null,
                       onTap: () {
                         setState(() {
@@ -135,6 +137,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
                   const Space.horizontal(Sp.px16),
                   Expanded(
                     child: AppToggleButton(
+                      key: WidgetKeys.todayButton,
                       isSelected: selectedDate.isSameDate(todayDate),
                       onTap: () {
                         if (!todayDate.isAfter(firstDay)) {
@@ -198,8 +201,8 @@ class _AppDatePickerState extends State<AppDatePicker> {
             const HorizontalDivider(),
             const Space.vertical(Sp.px16),
             BottomCtaBar(
-              saveKey: const Key('date-save'),
-              cancelKey: const Key('date-cancel'),
+              saveKey: WidgetKeys.dateSave,
+              cancelKey: WidgetKeys.dateCancel,
               padding: EdgeInsets.zero,
               onTapSave: () => context.pop(selectedDate),
               onTapCancel: () => context.pop(selectedDate),

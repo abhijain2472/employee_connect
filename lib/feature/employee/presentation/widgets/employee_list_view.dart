@@ -1,5 +1,6 @@
 import 'package:employee_connect/core/extension/context_extension.dart';
 import 'package:employee_connect/core/ui/app_colors.dart';
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/ui/sizing_util.dart';
@@ -41,7 +42,7 @@ class EmployeeListWithLabel extends StatelessWidget {
           itemBuilder: (_, index) {
             final employee = employees.elementAt(index);
             return EmployeeTile(
-              key: Key('e${employee.employeeId}'),
+              key: WidgetKeys.employeeKey(employee.employeeId),
               employee: employee,
               onDelete: () =>
                   employeeBloc.add(DeleteEmployee(employee: employee)),

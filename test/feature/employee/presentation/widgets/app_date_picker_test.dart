@@ -1,4 +1,5 @@
 import 'package:employee_connect/core/extension/date_extensions.dart';
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:employee_connect/feature/employee/presentation/widgets/app_date_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -31,28 +32,28 @@ void main() {
     expect(find.byType(AppDatePicker), findsOneWidget);
 
     // Verify that the Today and Next Monday buttons are rendered
-    expect(find.byKey(const Key('today_button')), findsOneWidget);
-    expect(find.byKey(const Key('next_monday_button')), findsOneWidget);
-    expect(find.byKey(const Key('next_tuesday_button')), findsOneWidget);
-    expect(find.byKey(const Key('after_1_week_button')), findsOneWidget);
+    expect(find.byKey(WidgetKeys.todayButton), findsOneWidget);
+    expect(find.byKey(WidgetKeys.nextMondayButton), findsOneWidget);
+    expect(find.byKey(WidgetKeys.nextTuesdayButton), findsOneWidget);
+    expect(find.byKey(WidgetKeys.after1WeekButton), findsOneWidget);
 
     // Verify that the TableCalendar is rendered
     expect(find.byType(TableCalendar), findsOneWidget);
 
     // Tap on the Next Monday button
-    await tester.tap(find.byKey(const Key('next_monday_button')));
+    await tester.tap(find.byKey(WidgetKeys.nextMondayButton));
     await tester.pump();
     // Verify that the next monday date text is updated
     expect(find.text(DateTime.now().nextMonday.dMMMYYYY), findsOneWidget);
 
     // Tap on the Next Tuesday button
-    await tester.tap(find.byKey(const Key('next_tuesday_button')));
+    await tester.tap(find.byKey(WidgetKeys.nextTuesdayButton));
     await tester.pump();
     // Verify that the next tuesday date text is updated
     expect(find.text(DateTime.now().nextTuesday.dMMMYYYY), findsOneWidget);
 
     // Tap on the Next Week button
-    await tester.tap(find.byKey(const Key('after_1_week_button')));
+    await tester.tap(find.byKey(WidgetKeys.after1WeekButton));
     await tester.pump();
     // Verify that the next week date text is updated
     expect(find.text(DateTime.now().nextWeek.dMMMYYYY), findsOneWidget);
@@ -66,12 +67,12 @@ void main() {
     // await _openDatePicker(tester);
 
     // Tap on the Today button
-    await tester.tap(find.byKey(const Key('today_button')));
+    await tester.tap(find.byKey(WidgetKeys.todayButton));
     await tester.pump();
     expect(find.text(DateTime.now().dMMMYYYY), findsOneWidget);
 
     // Tap on save button & verify that selected date is today's date
-    await tester.tap(find.text('Save'));
+    await tester.tap(find.byKey(WidgetKeys.dateSave));
     await tester.pumpAndSettle();
     expect(selectedDate?.isTodayDate, isTrue);
 

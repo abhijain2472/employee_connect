@@ -1,3 +1,4 @@
+import 'package:employee_connect/core/ui/widget_keys.dart';
 import 'package:employee_connect/feature/employee/presentation/widgets/bottom_cta_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,7 +31,8 @@ void main() {
     expect(find.byType(BottomCtaBar), findsOneWidget);
 
     // Verify that the specified padding is applied
-    expect(tester.widget<Padding>(find.byKey(const Key('padding'))).padding,
+    expect(
+        tester.widget<Padding>(find.byKey(WidgetKeys.bottomCtaPadding)).padding,
         const EdgeInsets.all(20.0));
 
     // Verify that the prefix widget is rendered

@@ -64,7 +64,7 @@ final tEmpItemData4 = EmployeeItemData(
   endDate: '2023-12-20 00:00:00.000Z',
 );
 final updatedEmployee2 = tEmployee2.copyWith(name: 'Updated Name');
-final updatedEmployee1 = tEmployee1.copyWith(name: 'Updated Name');
+final updatedEmployee1 = tEmployee1.copyWith(name: 'Updated Name 1');
 
 final tEmployeeList = <Employee>[
   tEmployee1,
